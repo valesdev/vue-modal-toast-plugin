@@ -1,0 +1,39 @@
+{
+  "name": "vue-modal-toast-plugin",
+  "version": "1.0.0",
+  "description": "A modal toast plugin for mobile, integrated with Vue.js and Vuex.",
+  "main": "dist/vueModalToastPlugin.common.js",
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name vueModalToastPlugin --formats commonjs,umd,umd-min src/main.js",
+    "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valesdev/vue-modal-toast-plugin.git"
+  },
+  "author": "Yuan Chong <ychongsaytc@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valesdev/vue-modal-toast-plugin/issues"
+  },
+  "homepage": "https://github.com/valesdev/vue-modal-toast-plugin#readme",
+  "keywords": [
+    "Vue",
+    "Toast"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-eslint": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "fibers": "^3.1.1",
+    "sass": "^1.17.2",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
