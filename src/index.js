@@ -1,12 +1,11 @@
 import vueToastStoreModule from './vueToastStoreModule'
-import VueToastHolderComponent from './VueToastHolderComponent'
+import VueToastHolderComponent from './VueToastHolderComponent.vue'
 
-export default {
+const vueModalToastPlugin = {
   install (Vue, options = {}) {
     Vue.prototype.$toast = this
 
     this.store = options.store
-    this.disableBuiltInTheme = !!options.disableBuiltInTheme
 
     this.store.registerModule('vueToast', vueToastStoreModule)
 
@@ -14,21 +13,21 @@ export default {
   },
 
   open ({ message, type = 'normal', ttl = 3e3 }) {
-    const payload = {
-      message,
-      type,
-      ttl
-    }
+    const payload = { message, type, ttl }
+
     if (typeof arguments[0] === 'string') {
       payload.message = arguments[0]
     }
+
     if (arguments[0] instanceof Error) {
       payload.message = arguments[0]
     }
+
     if (payload.message instanceof Error) {
       payload.message = payload.message.message
       payload.type = 'error'
     }
+
     return this.store.dispatch('vueToastOpen', payload)
   },
 
@@ -64,3 +63,5 @@ export default {
     })
   }
 }
+
+export default vueModalToastPlugin

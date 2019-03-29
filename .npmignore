@@ -3,7 +3,6 @@
 .editorconfig
 .eslintrc
 .browserslistrc
-.babelrc
 .postcssrc
 
-/dist/demo.html
+/build.js

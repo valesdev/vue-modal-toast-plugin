@@ -24,7 +24,7 @@ import vueModalToastPlugin from 'vue-modal-toast-plugin'
 
 const store = new Vuex.Store()
 
-Vue.use(vueModalToastPlugin, { store, disableBuiltInTheme: false })
+Vue.use(vueModalToastPlugin, { store })
 
 new Vue({ store })
 ```
@@ -39,7 +39,7 @@ Then include plugin css and add the holder tag to your root Vue node.
 </template>
 
 <style>
-@import '~vue-modal-toast-plugin/dist/vueModalToastPlugin.css';
+@import '~vue-modal-toast-plugin/dist/vue-modal-toast-plugin.min.css';
 </style>
 ```
 
