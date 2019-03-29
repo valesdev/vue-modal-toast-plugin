@@ -2,14 +2,18 @@
 
 [![Version](https://img.shields.io/npm/v/vue-modal-toast-plugin.svg)](https://www.npmjs.com/package/vue-modal-toast-plugin)
 [![Downloads](https://img.shields.io/npm/dm/vue-modal-toast-plugin.svg)](https://npmcharts.com/compare/vue-modal-toast-plugin?minimal=true)
+[![Issues](https://img.shields.io/github/issues/valesdev/vue-modal-toast-plugin.svg)](https://github.com/valesdev/vue-modal-toast-plugin/issues)
 [![License](https://img.shields.io/npm/l/vue-modal-toast-plugin.svg)](https://www.npmjs.com/package/vue-modal-toast-plugin)
 
 A modal toast plugin for mobile, integrated with Vue.js and Vuex.
 
+[Live demo](https://open.vales.io/vue-modal-toast-plugin/demo.html)
+
 ## Features
 
+- Only 8.8KB minified while 3.4KB gzipped
 - Integrated with Vue.js as a plugin
-- Show multiple toasts meanwhile in one view
+- Show multiple toasts meanwhile
 - Able to customize theme (with any scopes)
 - Able to customize TTL for toast auto-hiding
 
@@ -22,7 +26,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import vueModalToastPlugin from 'vue-modal-toast-plugin'
 
-const store = new Vuex.Store()
+const store = new Vuex.Store({ strict: true })
 
 Vue.use(vueModalToastPlugin, { store })
 
@@ -48,26 +52,7 @@ Finally, use it anywhere.
 ```js
 Vue.extend({
   mounted () {
-    // normal text
-    this.$toast.open('Test.')
-
-    // normal long text
-    this.$toast.open('Terrarum naturae animus derecti inclusum haec. Congestaque imagine erectos. Exemit numero ventos.')
-
-    // Error instance with message
-    this.$toast.open(new Error('Fatal Error!'))
-
-    // success scope
-    this.$toast.success('Successfully Uploaded.')
-
-    // info scope
-    this.$toast.info('You\'ve logged out.')
-
-    // warn scope
-    this.$toast.warn('You don\'t have permissions.')
-
-    // error scope
-    this.$toast.error('Server error, please try again.')
+    this.$toast.open('Hello toast!')
   }
 })
 ```

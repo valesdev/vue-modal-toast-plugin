@@ -13,6 +13,8 @@
         @click="$toast.close({ id: item._id })"
       >
 
+        <div class="toast-background" />
+
         <div
           class="toast-frame"
           :class="item.type ? `toast-frame-${item.type}` : ''"
@@ -40,25 +42,31 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 10;
+    z-index: 20;
     display: flex;
     align-items: center;
+  }
+  .toast-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
   }
   .toast-frame {
     flex-grow: 0;
     flex-shrink: 0;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    z-index: 1;
   }
 
   // theme
   .toast-wraper {
-    font-family: sans-serif;
-    font-size: 13px;
-    line-height: 16px;
-    color: #ffffff;
-    text-align: center;
-    word-break: break-word;
+  }
+  .toast-background {
   }
   .toast-frame {
     max-width: 220px;
@@ -66,6 +74,12 @@ export default {
     background: rgba(58, 58, 58, .8);
     border-radius: 4px;
     overflow: hidden;
+    font-family: sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+    text-align: center;
+    word-break: break-word;
     &::before {
       display: block;
       width: 24px;
@@ -102,24 +116,34 @@ export default {
     }
   }
   .vue-toast-enter-active, .vue-toast-leave-active {
-    transition-property: visibility, opacity, transform;
+    transition-property: visibility, opacity;
     transition-duration: .25s;
-    transition-timing-function: ease-in-out;
+    .toast-frame {
+      transition-property: transform;
+      transition-duration: .25s;
+      transition-timing-function: ease-in-out;
+    }
   }
   .vue-toast-enter {
-    visibility: hidden;
     opacity: 0;
-    transform: scale(1.1);
+    visibility: hidden;
+    .toast-frame {
+      transform: scale(1.1);
+    }
   }
   .vue-toast-leave-to {
-    visibility: hidden;
     opacity: 0;
-    transform: scale(.9);
+    visibility: hidden;
+    .toast-frame {
+      transform: scale(.9);
+    }
   }
   .vue-toast-leave, .vue-toast-enter-to {
-    visibility: visible;
     opacity: 1;
-    transform: scale(1);
+    visibility: visible;
+    .toast-frame {
+      transform: scale(1);
+    }
   }
 }
 </style>

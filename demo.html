@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no, email=no, address=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+    <title>vue-modal-toast-plugin demo</title>
+
+    <script type="application/javascript" src="//unpkg.com/vue/dist/vue.min.js"></script>
+    <script type="application/javascript" src="//unpkg.com/vuex/dist/vuex.min.js"></script>
+
+    <script type="application/javascript" src="//unpkg.com/vue-modal-toast-plugin/dist/vue-modal-toast-plugin.min.js"></script>
+    <link rel="stylesheet" media="all" href="//unpkg.com/vue-modal-toast-plugin/dist/vue-modal-toast-plugin.min.css" />
+  </head>
+  <body>
+    <h2>vue-modal-toast-plugin demo</h2>
+    <div id="app">
+      <p><a href="javascript:void(0)" @click="toastDemo01">Demo 01: normal scope with text</a></p>
+      <p><a href="javascript:void(0)" @click="toastDemo02">Demo 02: normal scope with long text</a></p>
+      <p><a href="javascript:void(0)" @click="toastDemo03">Demo 03: <code>Error</code> instance with message</a></p>
+      <p><a href="javascript:void(0)" @click="toastDemo04">Demo 04: success scope</a></p>
+      <p><a href="javascript:void(0)" @click="toastDemo05">Demo 05: info scope</a></p>
+      <p><a href="javascript:void(0)" @click="toastDemo06">Demo 06: warn scope</a></p>
+      <p><a href="javascript:void(0)" @click="toastDemo07">Demo 07: error scope</a></p>
+      <p><a href="javascript:void(0)" @click="toastDemo08">Demo 08: multiple toasts meanwhile</a></p>
+      <vue-toast-holder />
+    </div>
+
+    <script type="application/javascript">
+      window.document.addEventListener('DOMContentLoaded', function () {
+        const store = new Vuex.Store({ strict: true });
+
+        Vue.use(vueModalToastPlugin, { store: store });
+
+        new Vue({
+          el: '#app',
+          store: store,
+          methods: {
+            toastDemo01: function () {
+              this.$toast.open('Hello toast!');
+            },
+            toastDemo02: function () {
+              this.$toast.open('Terrarum naturae animus derecti inclusum haec. Congestaque imagine erectos. Exemit numero ventos.');
+            },
+            toastDemo03: function () {
+              this.$toast.open(new Error('Fatal Error!'));
+            },
+            toastDemo04: function () {
+              this.$toast.success('Successfully uploaded.');
+            },
+            toastDemo05: function () {
+              this.$toast.info('You\'ve logged out.');
+            },
+            toastDemo06: function () {
+              this.$toast.warn('You don\'t have permissions!');
+            },
+            toastDemo07: function () {
+              this.$toast.error('Server error, please try again.');
+            },
+            toastDemo08: function () {
+              this.$toast.info('This is the first toast.');
+              var _this = this
+              setTimeout(function () {
+                _this.$toast.warn('Adhuc fronde derecti caelo acervo fulminibus quisque. Tanta locum scythiam addidit vix. Capacius orbis invasit capacius peregrinum iuga.')
+              }, 750)
+              setTimeout(function () {
+                _this.$toast.warn('Matutinis occiduo chaos: totidemque. Origo nix evolvit eurus exemit. Parte surgere perveniunt dedit altae mutatas. Non lucis effigiem totidemque. Fert aberant convexi mutastis fronde omnia. Perveniunt his iussit pendebat. Caelo solidumque animal vindice ventis et legebantur? Ne diversa inter nubes praebebat animalia caelo.')
+              }, 1500)
+              setTimeout(function () {
+                _this.$toast.success('Successfully popped-up 4 toasts.')
+              }, 2250)
+            }
+          }
+        });
+      }, false)
+    </script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 const MUTATION_TYPE_VUE_TOAST_OPEN = 'vueToast/OPEN'
 const MUTATION_TYPE_VUE_TOAST_CLOSE = 'vueToast/CLOSE'
 
-const generateNonce = function () {
+const generateID = function () {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
   let value = ''
   for (let i = 0; i < 16; i++) {
@@ -21,15 +21,16 @@ export default {
   },
   actions: {
     vueToastOpen (context, payload) {
-      const id = generateNonce()
-
-      // timeout to delete the item
-      const timer = setTimeout(() => {
-        context.commit(MUTATION_TYPE_VUE_TOAST_CLOSE, { id })
-      }, (payload.ttl || 2e3))
+      // unique id
+      const id = generateID()
 
       // commit to open
-      context.commit(MUTATION_TYPE_VUE_TOAST_OPEN, Object.assign({ _id: id, _timer: timer }, payload))
+      context.commit(MUTATION_TYPE_VUE_TOAST_OPEN, Object.assign({ _id: id }, payload))
+
+      // timer to delete the item
+      setTimeout(() => {
+        context.commit(MUTATION_TYPE_VUE_TOAST_CLOSE, { id })
+      }, (payload.ttl || 2e3))
     },
 
     vueToastClose (context, payload) {
