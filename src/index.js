@@ -6,14 +6,15 @@ const vueModalToastPlugin = {
     Vue.prototype.$toast = this
 
     this.store = options.store
+    this.defaultTTL = options.defaultTTL || 3e3
 
     this.store.registerModule('vueToast', vueToastStoreModule)
 
     Vue.component(VueToastHolderComponent.name, VueToastHolderComponent)
   },
 
-  open ({ message, type = 'normal', ttl = 3e3 }) {
-    const payload = { message, type, ttl }
+  open ({ message, scope = 'normal', ttl }) {
+    const payload = { message, scope, ttl }
 
     if (typeof arguments[0] === 'string') {
       payload.message = arguments[0]
@@ -23,9 +24,13 @@ const vueModalToastPlugin = {
       payload.message = arguments[0]
     }
 
+    if (!payload.ttl) {
+      payload.ttl = this.defaultTTL
+    }
+
     if (payload.message instanceof Error) {
       payload.message = payload.message.message
-      payload.type = 'error'
+      payload.scope = 'error'
     }
 
     return this.store.dispatch('vueToastOpen', payload)
@@ -35,32 +40,32 @@ const vueModalToastPlugin = {
     return this.store.dispatch('vueToastClose', { id })
   },
 
-  success (message) {
-    return this.open({
-      type: 'success',
+  success (message, options = {}) {
+    return this.open(Object.assign({
+      scope: 'success',
       message
-    })
+    }, options))
   },
 
-  error (message) {
-    return this.open({
-      type: 'error',
+  error (message, options = {}) {
+    return this.open(Object.assign({
+      scope: 'error',
       message
-    })
+    }, options))
   },
 
-  info (message) {
-    return this.open({
-      type: 'info',
+  info (message, options = {}) {
+    return this.open(Object.assign({
+      scope: 'info',
       message
-    })
+    }, options))
   },
 
-  warn (message) {
-    return this.open({
-      type: 'warn',
+  warn (message, options = {}) {
+    return this.open(Object.assign({
+      scope: 'warn',
       message
-    })
+    }, options))
   }
 }
 

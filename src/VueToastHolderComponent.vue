@@ -17,7 +17,7 @@
 
         <div
           class="toast-frame"
-          :class="item.type ? `toast-frame-${item.type}` : ''"
+          :class="item.scope ? `toast-frame-${item.scope}` : ''"
         >{{ item.message }}</div>
 
       </div>

@@ -30,7 +30,7 @@ export default {
       // timer to delete the item
       setTimeout(() => {
         context.commit(MUTATION_TYPE_VUE_TOAST_CLOSE, { id })
-      }, (payload.ttl || 2e3))
+      }, (payload.ttl))
     },
 
     vueToastClose (context, payload) {
