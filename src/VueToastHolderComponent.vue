@@ -62,6 +62,15 @@ export default {
     position: relative;
     z-index: 1;
   }
+  @media all and (min-width: 769px) {
+    .toast-wraper {
+      padding: 1em;
+      align-items: flex-start;
+    }
+    .toast-frame {
+      max-width: 50vw;
+    }
+  }
 
   // theme
   .toast-wraper {
@@ -88,6 +97,8 @@ export default {
       margin-bottom: 8px;
       margin-left: auto;
       margin-right: auto;
+      background-repeat: no-repeat;
+      background-position: center center;
       background-size: contain;
     }
   }
@@ -115,6 +126,19 @@ export default {
       background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTMuNDgyIDMuNTM2QzUuODQgMS4xNzkgOC42OCAwIDEyIDBjMy4zMjEgMCA2LjE1MiAxLjE3IDguNDkxIDMuNTA5QzIyLjgzMSA1Ljg0OSAyNCA4LjY3OSAyNCAxMmMwIDMuMzIxLTEuMTcgNi4xNTItMy41MDkgOC40OTFDMTguMTUxIDIyLjgzMSAxNS4zMjEgMjQgMTIgMjRjLTMuMzIxIDAtNi4xNTItMS4xNy04LjQ5MS0zLjUwOUMxLjE2OSAxOC4xNTEgMCAxNS4zMjEgMCAxMmMwLTMuMzIxIDEuMTYtNi4xNDMgMy40ODItOC40NjR6bTE0LjMwNCAxMi40ODJMMTMuNzY4IDEybDQuMDcxLTQuMDE4Yy4yMTUtLjIxNC4yMTUtLjQyOCAwLS42NDNsLTEuMTc4LTEuMTI1Yy0uMTA3LS4xMDctLjIxNS0uMTYtLjMyMi0uMTYtLjA3MSAwLS4xNi4wNTMtLjI2OC4xNkwxMiAxMC4xOCA3LjkyOSA2LjIxNGMtLjEwOC0uMTA3LS4xOTctLjE2LS4yNjgtLjE2LS4xMDcgMC0uMjE1LjA1My0uMzIyLjE2TDYuMjE0IDcuMzRjLS4yMTQuMjE1LS4yMTQuNDI5IDAgLjY0M0wxMC4yODYgMTJsLTQuMDcyIDQuMDcxYy0uMDcxLjAzNi0uMTA3LjEyNS0uMTA3LjI2OCAwIC4xNDMuMDM2LjI1LjEwNy4zMjJsMS4xMjUgMS4xNzhjLjA3Mi4wNzIuMTc5LjEwNy4zMjIuMTA3LjE0MyAwIC4yNS0uMDM1LjMyMS0uMTA3TDEyIDEzLjc2OGw0LjA3MSA0LjAxOGMuMTA4LjEwNy4xOTcuMTYuMjY4LjE2LjEwNyAwIC4yMTUtLjA1My4zMjItLjE2bDEuMTI1LTEuMTI1YS4zNi4zNiAwIDAgMCAuMTYtLjMyMmMwLS4xMDctLjA1My0uMjE0LS4xNi0uMzIxeiIgZmlsbD0iI0ZGRiIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9zdmc+');
     }
   }
+  @media all and (min-width: 769px) {
+    .toast-frame {
+      text-align: initial;
+      display: flex;
+      align-items: center;
+      &::before {
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin: 0 1em 0 0;
+      }
+    }
+  }
+
   .vue-toast-enter-active, .vue-toast-leave-active {
     transition-property: visibility, opacity;
     transition-duration: .25s;

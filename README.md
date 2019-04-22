@@ -13,6 +13,7 @@ A modal toast plugin for mobile, integrated with Vue.js and Vuex.
 
 - Only 9.0KB minified while 3.5KB gzipped
 - Integrated with Vue.js as a plugin
+- Responsive Design
 - Show multiple toasts meanwhile
 - Able to customize theme (with any scopes)
 - Able to customize TTL for toast auto-hiding
