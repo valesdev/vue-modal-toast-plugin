@@ -33,6 +33,10 @@ const vueModalToastPlugin = {
       payload.scope = 'error'
     }
 
+    if (payload.message === '' || payload.message === null) {
+      return
+    }
+
     return this.store.dispatch('vueToastOpen', payload)
   },
 
