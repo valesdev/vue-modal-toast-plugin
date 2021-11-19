@@ -1,6 +1,6 @@
 {
   "name": "vue-modal-toast-plugin",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "A modal toast plugin for mobile, integrated with Vue.js and Vuex.",
   "main": "dist/vue-modal-toast-plugin.min.js",
   "scripts": {
